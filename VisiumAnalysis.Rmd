@@ -18,6 +18,10 @@ Installing and loading VisualExperiment class.
 ```{r}
 library(devtools)
 install_github("drighelli/VisiumExperiment")
+```
+
+
+```{r}
 library(VisiumExperiment)
 ```
 
@@ -38,9 +42,6 @@ features <- read.csv("data/raw_feature_bc_matrix/features.tsv", sep="\t",
                                                "Feature_type"))
 library("Matrix")
 counts <- readMM(file="data/raw_feature_bc_matrix/matrix.mtx")
-# sce <- SingleCellExperiment::SingleCellExperiment(rowData=features, 
-#                                                   colData=barcodes, 
-#                                                   assays=c(counts=counts))
 ```
 
 ## Spatial Coordinates
@@ -96,6 +97,6 @@ by the tissue.
 
 ```{r}
 sum(isInTissue(ve))
-ve[isInTissue(ve)]
+# ve[isInTissue(ve)] ## subset not defined yet
 ```
 
