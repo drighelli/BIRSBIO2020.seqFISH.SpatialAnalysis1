@@ -1,0 +1,6 @@
+data filter=lfs diff=lfs merge=lfs -text
+data/V1_Adult_Mouse_Brain_metrics_summary.csv filter=lfs diff=lfs merge=lfs -text
+data/analysis filter=lfs diff=lfs merge=lfs -text
+data/raw_feature_bc_matrix filter=lfs diff=lfs merge=lfs -text
+data/spatial filter=lfs diff=lfs merge=lfs -text
+*.mtx filter=lfs diff=lfs merge=lfs -text
