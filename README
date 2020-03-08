@@ -1,0 +1,4 @@
+This repository shows how to install the SpatialExperiment R package and how 
+to use it with seqFISH data provided here https://github.com/BIRSBiointegration/Hackathon/tree/master/seqFISH
+
+Moreover, it stores the provided scRNA-seq data into a SingleCellExperiment class.
