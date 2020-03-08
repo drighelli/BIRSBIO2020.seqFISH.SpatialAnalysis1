@@ -30,8 +30,23 @@ fishFeaturesCounts <- read.table(file="../SpatialAnalysis/data/seqFISH/seqfish_n
 ## Single Cell RNA-seq data
 
 ```{r}
-
+scRNASeqCounts <- read.table(file="../SpatialAnalysis/data/seqFISH/tasic_scRNAseq_training_b2.txt", header=FALSE, sep="\t", row.names=1)
+scRNASeqLabels <- read.table(file="../SpatialAnalysis/data/seqFISH/tasic_scRNAseq_labels.tsv", header=FALSE, sep="\t")
 ```
+
+# SingleCellExperiment package
+
+We load the scRNA-seq data into a SingleCellExperiment class, so we can use it
+for further joint analysis with the seqFISH data.
+
+```{r}
+library(SingleCellExperiment)
+sce <- SingleCellExperiment(rowData=rownames(scRNASeqCounts), 
+                    colData=scRNASeqLabels,
+                    assays=SimpleList(counts=as.matrix(scRNASeqCounts)))
+show(sce)
+```
+
 
 # SpatialExperiment package
 
