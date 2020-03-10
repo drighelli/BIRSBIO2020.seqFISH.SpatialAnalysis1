@@ -94,5 +94,6 @@ showing that the y coordinates are identical to the x ones.
 fakeFishCoords <- cbind(fishCoordinates[,c(1:3)], fishCoordinates[,3])
 colnames(fakeFishCoords) <- c("ID", "Unknown", "x", "y")
 spatialCoords(se) <- fakeFishCoords
+spatialCoords(se)
 ```
 

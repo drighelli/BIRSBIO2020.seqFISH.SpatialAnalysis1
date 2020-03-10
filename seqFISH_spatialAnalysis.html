@@ -469,33 +469,8 @@ show(sce)</code></pre>
 <pre class="r"><code>library(devtools)</code></pre>
 <pre><code>## Loading required package: usethis</code></pre>
 <pre class="r"><code>install_github(&quot;drighelli/SpatialExperiment&quot;, ref=&quot;spatialExperiment&quot;)</code></pre>
-<pre><code>## Downloading GitHub repo drighelli/SpatialExperiment@spatialExperiment</code></pre>
-<pre><code>## Skipping 2 packages not available: SingleCellExperiment, S4Vectors</code></pre>
-<pre><code>##   
-   checking for file ‘/private/var/folders/3b/2z91xnmx6vq99jc862r_5xn40000gn/T/Rtmp1uvyId/remotes4ca16a909154/drighelli-SpatialExperiment-2ac4d1f/DESCRIPTION’ ...
-  
-✓  checking for file ‘/private/var/folders/3b/2z91xnmx6vq99jc862r_5xn40000gn/T/Rtmp1uvyId/remotes4ca16a909154/drighelli-SpatialExperiment-2ac4d1f/DESCRIPTION’
-## 
-  
-─  preparing ‘SpatialExperiment’:
-## 
-  
-   checking DESCRIPTION meta-information ...
-  
-✓  checking DESCRIPTION meta-information
-## 
-  
-─  checking for LF line-endings in source and make files and shell scripts
-## 
-  
-─  checking for empty or unneeded directories
-## 
-  
-─  building ‘SpatialExperiment_0.0.99.tar.gz’
-## 
-  
-   
-## </code></pre>
+<pre><code>## Skipping install of 'SpatialExperiment' from a github remote, the SHA1 (f78dfd8c) has not changed since last install.
+##   Use `force = TRUE` to force installation</code></pre>
 </div>
 <div id="class-handling" class="section level2">
 <h2>Class handling</h2>
@@ -548,7 +523,22 @@ show(se)</code></pre>
 <p>We create a fake fish coordinates data frame and overwrite the old one, showing that the y coordinates are identical to the x ones.</p>
 <pre class="r"><code>fakeFishCoords &lt;- cbind(fishCoordinates[,c(1:3)], fishCoordinates[,3])
 colnames(fakeFishCoords) &lt;- c(&quot;ID&quot;, &quot;Unknown&quot;, &quot;x&quot;, &quot;y&quot;)
-spatialCoords(se) &lt;- fakeFishCoords</code></pre>
+spatialCoords(se) &lt;- fakeFishCoords
+spatialCoords(se)</code></pre>
+<pre><code>## DataFrame with 1597 rows and 4 columns
+##             ID   Unknown         x         y
+##      &lt;integer&gt; &lt;integer&gt; &lt;numeric&gt; &lt;numeric&gt;
+## 1            1       100    265.76    265.76
+## 2            2       100    290.48    290.48
+## 3            3       100    257.12    257.12
+## 4            4       100    753.46    753.46
+## 5            5       100    700.01    700.01
+## ...        ...       ...       ...       ...
+## 1593      1593       100   1129.06   1129.06
+## 1594      1594       100   1044.02   1044.02
+## 1595      1595       100   1388.76   1388.76
+## 1596      1596       100   5172.85   5172.85
+## 1597      1597       100    5220.6    5220.6</code></pre>
 </div>
 </div>
 </div>
