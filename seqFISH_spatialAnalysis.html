@@ -391,61 +391,8 @@ scRNASeqLabels &lt;- read.table(file=&quot;../SpatialAnalysis/data/seqFISH/tasic
 <div id="singlecellexperiment-package" class="section level1">
 <h1>SingleCellExperiment package</h1>
 <p>We load the scRNA-seq data into a SingleCellExperiment class, so we can use it for further joint analysis with the seqFISH data.</p>
-<pre class="r"><code>library(SingleCellExperiment)</code></pre>
-<pre><code>## Loading required package: SummarizedExperiment</code></pre>
-<pre><code>## Loading required package: GenomicRanges</code></pre>
-<pre><code>## Loading required package: stats4</code></pre>
-<pre><code>## Loading required package: BiocGenerics</code></pre>
-<pre><code>## Loading required package: parallel</code></pre>
-<pre><code>## 
-## Attaching package: 'BiocGenerics'</code></pre>
-<pre><code>## The following objects are masked from 'package:parallel':
-## 
-##     clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,
-##     clusterExport, clusterMap, parApply, parCapply, parLapply,
-##     parLapplyLB, parRapply, parSapply, parSapplyLB</code></pre>
-<pre><code>## The following objects are masked from 'package:stats':
-## 
-##     IQR, mad, sd, var, xtabs</code></pre>
-<pre><code>## The following objects are masked from 'package:base':
-## 
-##     anyDuplicated, append, as.data.frame, basename, cbind, colnames,
-##     dirname, do.call, duplicated, eval, evalq, Filter, Find, get, grep,
-##     grepl, intersect, is.unsorted, lapply, Map, mapply, match, mget,
-##     order, paste, pmax, pmax.int, pmin, pmin.int, Position, rank,
-##     rbind, Reduce, rownames, sapply, setdiff, sort, table, tapply,
-##     union, unique, unsplit, which, which.max, which.min</code></pre>
-<pre><code>## Loading required package: S4Vectors</code></pre>
-<pre><code>## 
-## Attaching package: 'S4Vectors'</code></pre>
-<pre><code>## The following object is masked from 'package:base':
-## 
-##     expand.grid</code></pre>
-<pre><code>## Loading required package: IRanges</code></pre>
-<pre><code>## Loading required package: GenomeInfoDb</code></pre>
-<pre><code>## Loading required package: Biobase</code></pre>
-<pre><code>## Welcome to Bioconductor
-## 
-##     Vignettes contain introductory material; view with
-##     'browseVignettes()'. To cite Bioconductor, see
-##     'citation(&quot;Biobase&quot;)', and for packages 'citation(&quot;pkgname&quot;)'.</code></pre>
-<pre><code>## Loading required package: DelayedArray</code></pre>
-<pre><code>## Loading required package: matrixStats</code></pre>
-<pre><code>## 
-## Attaching package: 'matrixStats'</code></pre>
-<pre><code>## The following objects are masked from 'package:Biobase':
-## 
-##     anyMissing, rowMedians</code></pre>
-<pre><code>## Loading required package: BiocParallel</code></pre>
-<pre><code>## 
-## Attaching package: 'DelayedArray'</code></pre>
-<pre><code>## The following objects are masked from 'package:matrixStats':
-## 
-##     colMaxs, colMins, colRanges, rowMaxs, rowMins, rowRanges</code></pre>
-<pre><code>## The following objects are masked from 'package:base':
-## 
-##     aperm, apply, rowsum</code></pre>
-<pre class="r"><code>sce &lt;- SingleCellExperiment(rowData=rownames(scRNASeqCounts), 
+<pre class="r"><code>library(SingleCellExperiment)
+sce &lt;- SingleCellExperiment(rowData=rownames(scRNASeqCounts), 
                     colData=scRNASeqLabels,
                     assays=SimpleList(counts=as.matrix(scRNASeqCounts)))
 show(sce)</code></pre>
@@ -466,10 +413,9 @@ show(sce)</code></pre>
 <div id="installation" class="section level2">
 <h2>Installation</h2>
 <p>We install the SpatialExperiment package which is available through the github/drighelli repository on spatialExperiment branch.</p>
-<pre class="r"><code>library(devtools)</code></pre>
-<pre><code>## Loading required package: usethis</code></pre>
-<pre class="r"><code>install_github(&quot;drighelli/SpatialExperiment&quot;, ref=&quot;spatialExperiment&quot;)</code></pre>
-<pre><code>## Skipping install of 'SpatialExperiment' from a github remote, the SHA1 (f78dfd8c) has not changed since last install.
+<pre class="r"><code>library(devtools)
+install_github(&quot;drighelli/SpatialExperiment&quot;, ref=&quot;spatialExperiment&quot;)</code></pre>
+<pre><code>## Skipping install of 'SpatialExperiment' from a github remote, the SHA1 (712ee141) has not changed since last install.
 ##   Use `force = TRUE` to force installation</code></pre>
 </div>
 <div id="class-handling" class="section level2">

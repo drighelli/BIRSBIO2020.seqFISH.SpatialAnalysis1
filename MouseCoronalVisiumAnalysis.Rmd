@@ -37,11 +37,18 @@ Loading features and count matrix.
 ```{r}
 barcodes <- read.csv("data/visium/mouse_coronal_V1/raw_feature_bc_matrix/barcodes.tsv", sep="\t", 
                      header=FALSE, col.names=c("Barcodes"))
+
+barcodesEx <- head(barcodes, n=50)
+saveRDS(object=barcodesEx, file="barcodesEx.Rds")
 features <- read.csv("data/visium/mouse_coronal_V1/raw_feature_bc_matrix/features.tsv", sep="\t", 
-                     header=FALSE, col.names=c("Feature_ID", "Feature_name", 
+                     header=FALSE, col.names=c("Barcodes", "Feature_name", 
                                                "Feature_type"))
+featuresEx <- head(features, n=50)
+saveRDS(object=featuresEx, file="featuresEx.Rds")
 library("Matrix")
 counts <- readMM(file="data/visium/mouse_coronal_V1/raw_feature_bc_matrix/matrix.mtx")
+countsEx <- head(counts, n=50)[,1:50]
+saveRDS(object=countsEx, file="countsEX.Rds")
 ```
 
 ## Spatial Coordinates
@@ -49,10 +56,14 @@ counts <- readMM(file="data/visium/mouse_coronal_V1/raw_feature_bc_matrix/matrix
 Loading Spatial coordinates of the tissue section.
 
 ```{r}
+
+
 tissue.positions <- read.csv("data/visium/mouse_coronal_V1/spatial/tissue_positions_list.csv", 
                              header=FALSE, col.names=c("Barcodes", "in_tissue", 
                                                        "array_row", "array_col",
                                                        "pxl_col_in_fullres", "pxl_row_in_fullres"))
+tissPosEx <- tissue.positions[match(barcodesEx$Barcodes, tissue.positions$Barcodes),]
+saveRDS(object=tissPosEx, file="tissPosEx.Rds")
 ```
 
 ## Spatial Scale Factors
@@ -75,6 +86,12 @@ Creating VisiumExperiment class within 10x Visium data and testing the show meth
 ve <- VisiumExperiment(rowData=features, colData=barcodes, 
                            assays=c(counts=counts), 
                            spatialCoords=tissue.positions,
+                           scaleFactors=scalefactors)
+ve
+
+ve <- VisiumExperiment(rowData=featuresEx, colData=barcodesEx, 
+                           assays=c(counts=countsEx), 
+                           spatialCoords=tissPosEx,
                            scaleFactors=scalefactors)
 ve
 ```
